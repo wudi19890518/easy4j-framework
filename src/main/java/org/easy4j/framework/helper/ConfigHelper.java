@@ -5,7 +5,7 @@ import org.easy4j.framework.util.PropertyUtil;
 
 import java.util.Properties;
 
-public class ConfIgHelper {
+public class ConfigHelper {
 
     private static final Properties CONFIG_PROPERTIES;
 

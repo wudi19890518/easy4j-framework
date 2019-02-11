@@ -31,4 +31,26 @@ public class Request {
     public void setRequestPath(String requestPath) {
         this.requestPath = requestPath;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Request request = (Request) o;
+
+        return new org.apache.commons.lang3.builder.EqualsBuilder()
+                .append(requestMethod, request.requestMethod)
+                .append(requestPath, request.requestPath)
+                .isEquals();
+    }
+
+    @Override
+    public int hashCode() {
+        return new org.apache.commons.lang3.builder.HashCodeBuilder(17, 37)
+                .append(requestMethod)
+                .append(requestPath)
+                .toHashCode();
+    }
 }

@@ -13,7 +13,7 @@ public class ClassHelper {
     private static final Set<Class<?>> CLASS_SET;
 
     static {
-        String appBasePackage = ConfIgHelper.getAppBasePackage();
+        String appBasePackage = ConfigHelper.getAppBasePackage();
         CLASS_SET = ClassUtil.getClassSet(appBasePackage);
     }
 

@@ -12,7 +12,7 @@ public class PropertyUtil {
     private static final Logger LOGGER = LogManager.getLogger(PropertyUtil.class);
 
     public static Properties loadProperties(String filename){
-       InputStream is = Thread.currentThread().getClass().getClassLoader().getResourceAsStream(filename);
+       InputStream is = PropertyUtil.class.getClassLoader().getResourceAsStream(filename);
 
        Properties props = new Properties();
 

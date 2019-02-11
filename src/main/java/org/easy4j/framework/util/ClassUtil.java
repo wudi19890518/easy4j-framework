@@ -50,6 +50,10 @@ public class ClassUtil {
         return loadClass(className, false, getClassLoader());
     }
 
+    public static Class<?> loadClass(String className, boolean initialize){
+        return loadClass(className, initialize, getClassLoader());
+    }
+
     public static Class<?> loadClass(String className, boolean initialize, ClassLoader classLoader){
         Class<?> cls = null;
         try {

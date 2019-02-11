@@ -2,23 +2,22 @@ package org.easy4j.framework.core.servlet;
 
 
 
-import org.apache.commons.lang3.ObjectUtils;
-import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.easy4j.framework.annotation.ResponseBody;
 import org.easy4j.framework.bean.Handler;
 import org.easy4j.framework.bean.Param;
-import org.easy4j.framework.bean.Request;
 import org.easy4j.framework.helper.BeanHelper;
-import org.easy4j.framework.helper.ConfIgHelper;
+import org.easy4j.framework.helper.BeanLoader;
+import org.easy4j.framework.helper.ConfigHelper;
 import org.easy4j.framework.helper.ControllerHelper;
 import org.easy4j.framework.util.JsonUtil;
 import org.easy4j.framework.util.ReflectionUtil;
 
 import javax.servlet.ServletConfig;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
+import javax.servlet.ServletRegistration;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -38,9 +37,16 @@ public class DispatcherServlet extends HttpServlet {
 
     @Override
     public void init(ServletConfig config) throws ServletException {
-       // TODO 初始化操作
+        BeanLoader.init();
 
+        ServletContext servletContext = config.getServletContext();
+        ServletRegistration jspServlet = servletContext.getServletRegistration("jsp");
+        jspServlet.addMapping("/index.jsp");
+        jspServlet.addMapping(ConfigHelper.getAppViewPath() + "*");
 
+//        ServletRegistration defaultServlet = servletContext.getServletRegistration("default");
+//        defaultServlet.addMapping("/favicon.ico");
+//        defaultServlet.addMapping(ConfigHelper.getAppAssetPath() + "*");
     }
 
     @Override
@@ -89,16 +95,11 @@ public class DispatcherServlet extends HttpServlet {
                     if(viewPath.startsWith("/")){
                         resp.sendRedirect(req.getContextPath() + viewPath);
                     }else{
-                        req.getRequestDispatcher(ConfIgHelper.getAppViewPath() + viewPath);
+                        req.getRequestDispatcher(ConfigHelper.getAppViewPath() + viewPath).forward(req, resp);
                     }
                 }
             }
-
-
-
-
         }
-
         LOGGER.info("requestMethod={}, requestPath={}", requestMethod, requestPath);
 
     }

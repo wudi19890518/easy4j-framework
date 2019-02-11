@@ -3,6 +3,7 @@ package org.easy4j.framework.util;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
@@ -32,5 +33,16 @@ public class ReflectionUtil {
         }
 
         return result;
+    }
+
+
+    public static void setField(Field beanField, Object beanInstance, Object beanFieldValue){
+        try {
+            beanField.setAccessible(true);
+            beanField.set(beanInstance, beanFieldValue);
+        } catch (IllegalAccessException e) {
+            LOGGER.error("set field failure", e);
+            throw new RuntimeException(e);
+        }
     }
 }
