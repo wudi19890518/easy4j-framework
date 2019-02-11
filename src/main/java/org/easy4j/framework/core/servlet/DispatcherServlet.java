@@ -16,14 +16,16 @@ import java.io.IOException;
 /**
  *
  */
-@WebServlet(urlPatterns = "/*", loadOnStartup = 0)
+@WebServlet(urlPatterns = "/*")
 public class DispatcherServlet extends HttpServlet {
 
     private static final Logger LOGGER = LogManager.getLogger(DispatcherServlet.class);
 
     @Override
     public void init(ServletConfig config) throws ServletException {
-        super.init(config);
+       // TODO 初始化操作
+
+
     }
 
     @Override

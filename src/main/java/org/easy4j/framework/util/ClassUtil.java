@@ -70,7 +70,6 @@ public class ClassUtil {
     public static Set<Class<?>> getClassSet(String basePackage){
         Set<Class<?>> classSet = new HashSet<Class<?>>();
         String dirpathName = basePackage.replace(".", "/");
-        System.out.println(basePackage);
 
         try {
             Enumeration<URL> urlEnumeration = getClassLoader().getResources(dirpathName);
@@ -87,18 +86,11 @@ public class ClassUtil {
             }
 
         } catch (IOException e) {
-           LOGGER.error("扫描项目业务类失败,basePackage:{}", basePackage, e);
+           LOGGER.error("scan class failure,basePackage:{}", basePackage, e);
            throw new RuntimeException(e);
         }
 
 
         return classSet;
-    }
-
-    public static void main(String[] args) throws ClassNotFoundException {
-//        Set<Class<?>> classSet = ClassUtil.getClassSet("org.easy4j");
-//        System.out.println(classSet);
-
-        Class.forName("org.easy4j.framework.core.servlet.DispatcherServlet");
     }
 }

@@ -14,9 +14,7 @@ public class ConfIgHelper {
     }
 
     public static String getAppBasePackage(){
-//        CONFIG_PROPERTIES.getProperty();
-
-        return null;
+        return PropertyUtil.getStringValue(CONFIG_PROPERTIES, ConfigConstant.APP_BASE_BACKPAGE);
     }
 
 }
