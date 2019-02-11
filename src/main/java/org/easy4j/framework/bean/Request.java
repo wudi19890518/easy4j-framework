@@ -3,15 +3,15 @@ package org.easy4j.framework.bean;
 /**
  * web请求信息
  */
-public class Reqeust {
+public class Request {
 
     private String requestMethod;
 
     private String requestPath;
 
-    public Reqeust(){}
+    public Request(){}
 
-    public Reqeust(String requestMethod, String requestPath) {
+    public Request(String requestMethod, String requestPath) {
         this.requestMethod = requestMethod;
         this.requestPath = requestPath;
     }

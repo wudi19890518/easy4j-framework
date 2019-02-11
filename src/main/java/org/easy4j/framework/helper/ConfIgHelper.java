@@ -17,4 +17,8 @@ public class ConfIgHelper {
         return PropertyUtil.getStringValue(CONFIG_PROPERTIES, ConfigConstant.APP_BASE_BACKPAGE);
     }
 
+    public static String getAppViewPath(){
+        return PropertyUtil.getStringValue(CONFIG_PROPERTIES, ConfigConstant.APP_VIEW_PATH);
+    }
+
 }

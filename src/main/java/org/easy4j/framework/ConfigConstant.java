@@ -6,5 +6,7 @@ public class ConfigConstant {
 
     public static final String APP_BASE_BACKPAGE = "app.base.package";
 
+    public static final String APP_VIEW_PATH = "app.view.path";
+
 
 }

@@ -46,11 +46,11 @@ public class ClassUtil {
         return Thread.currentThread().getContextClassLoader();
     }
 
-    private static Class<?> loadClass(String className){
+    public static Class<?> loadClass(String className){
         return loadClass(className, false, getClassLoader());
     }
 
-    private static Class<?> loadClass(String className, boolean initialize, ClassLoader classLoader){
+    public static Class<?> loadClass(String className, boolean initialize, ClassLoader classLoader){
         Class<?> cls = null;
         try {
             cls = Class.forName(className, initialize, classLoader);

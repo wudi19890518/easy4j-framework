@@ -5,15 +5,15 @@ import java.lang.reflect.Method;
 /**
  * web请求处理器
  */
-public class Hanlder {
+public class Handler {
 
     private Class<?> controllerClass;
 
     private Method method;
 
-    public Hanlder(){}
+    public Handler(){}
 
-    public Hanlder(Class<?> controllerClass, Method method) {
+    public Handler(Class<?> controllerClass, Method method) {
         this.controllerClass = controllerClass;
         this.method = method;
     }
