@@ -8,7 +8,7 @@ import org.easy4j.framework.util.ReflectionUtil;
 import java.lang.reflect.Field;
 import java.util.Map;
 
-public class IocHelper {
+public class IOCHelper {
 
     static {
         Map<Class<?>, Object> beanMap = BeanHelper.getBeanMap();

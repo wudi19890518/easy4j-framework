@@ -9,7 +9,7 @@ public class BeanLoader {
         Class<?>[] classList = {
                 ClassHelper.class,
                 BeanHelper.class,
-                IocHelper.class,
+                IOCHelper.class,
                 ControllerHelper.class
         };
 
