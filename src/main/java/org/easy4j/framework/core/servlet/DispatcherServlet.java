@@ -44,8 +44,8 @@ public class DispatcherServlet extends HttpServlet {
         jspServlet.addMapping("/index.jsp");
         jspServlet.addMapping(ConfigHelper.getAppViewPath() + "*");
 
-//        ServletRegistration defaultServlet = servletContext.getServletRegistration("default");
-//        defaultServlet.addMapping("/favicon.ico");
+        ServletRegistration defaultServlet = servletContext.getServletRegistration("default");
+        defaultServlet.addMapping("/favicon.ico");
 //        defaultServlet.addMapping(ConfigHelper.getAppAssetPath() + "*");
     }
 
@@ -86,7 +86,7 @@ public class DispatcherServlet extends HttpServlet {
                     String json = JsonUtil.toJson(result);
                     writer.write(json);
                     writer.flush();
-                    writer.close();;
+                    writer.close();
                 }
             }else{
                 // 返回页面视图

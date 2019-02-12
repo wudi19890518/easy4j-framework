@@ -30,5 +30,9 @@ public class BeanHelper {
         return BEAN_MAP.get(cls);
     }
 
+    public static void setBean(Class<?> targetClass, Object instance){
+        BEAN_MAP.put(targetClass, instance);
+    }
+
 
 }
