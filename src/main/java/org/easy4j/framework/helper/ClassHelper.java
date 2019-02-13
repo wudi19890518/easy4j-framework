@@ -50,7 +50,7 @@ public class ClassHelper {
     public static Set<Class<?>> getClassSetBySuper(Class<?> superClass){
         Set<Class<?>> classSet = new HashSet<Class<?>>();
         for(Class<?> cls : CLASS_SET){
-            if(cls.isAssignableFrom(superClass) && !cls.equals(superClass)){
+            if(superClass.isAssignableFrom(cls) && !cls.equals(superClass)){
                 classSet.add(cls);
             }
         }
