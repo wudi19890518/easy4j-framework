@@ -21,25 +21,26 @@ public class TransacionProxy implements Proxy {
      * @throws Throwable
      */
     public Object doProxy(ProxyChain proxyChain) throws Throwable {
-        LOGGER.info("事务代理开始");
+
         Object result = null;
         Method targetMethod = proxyChain.getTargetMethod();
 
         if(targetMethod.isAnnotationPresent(Transactional.class)){
             try{
                 DatabaseHelper.beginTransaction();
+                LOGGER.debug("事务代理开始");
                 result = proxyChain.doProxyChain();
                 DatabaseHelper.commitTransaction();
+                LOGGER.debug("事务代理结束");
             }catch(Exception e){
                 DatabaseHelper.rollbackTransaction();
-                LOGGER.info("回滚事务");
+                LOGGER.error("回滚事务", e);
                 throw e;
             }
         }else{
             result = proxyChain.doProxyChain();
         }
 
-        LOGGER.info("事务代理结束");
         return result;
     }
 }
