@@ -4,10 +4,11 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.easy4j.framework.annotation.Aspect;
 import org.easy4j.framework.annotation.Service;
-import org.easy4j.framework.annotation.Transaction;
+import org.easy4j.framework.annotation.Transactional;
 import org.easy4j.framework.proxy.AbstractProxy;
 import org.easy4j.framework.proxy.Proxy;
 import org.easy4j.framework.proxy.ProxyManager;
+import org.easy4j.framework.proxy.TransacionProxy;
 import org.easy4j.framework.util.ReflectionUtil;
 
 import java.lang.annotation.Annotation;
@@ -66,7 +67,7 @@ public class AopHelper {
 
     private static void addTransactionProxy(Map<Class<?>, Set<Class<?>>> proxyMap){
         Set<Class<?>> serviceClassSet = ClassHelper.getClassSetByAnnotation(Service.class);
-        proxyMap.put(Transaction.class, serviceClassSet);
+        proxyMap.put(TransacionProxy.class, serviceClassSet);
     }
 
     private static Map<Class<?>, Set<Class<?>>> createProxyMap() throws Exception{

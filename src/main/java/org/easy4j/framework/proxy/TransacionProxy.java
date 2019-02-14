@@ -2,7 +2,7 @@ package org.easy4j.framework.proxy;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.easy4j.framework.annotation.Transaction;
+import org.easy4j.framework.annotation.Transactional;
 import org.easy4j.framework.helper.DatabaseHelper;
 
 import java.lang.reflect.Method;
@@ -25,7 +25,7 @@ public class TransacionProxy implements Proxy {
         Object result = null;
         Method targetMethod = proxyChain.getTargetMethod();
 
-        if(targetMethod.isAnnotationPresent(Transaction.class)){
+        if(targetMethod.isAnnotationPresent(Transactional.class)){
             try{
                 DatabaseHelper.beginTransaction();
                 result = proxyChain.doProxyChain();
