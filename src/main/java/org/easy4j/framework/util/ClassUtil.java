@@ -42,7 +42,7 @@ public class ClassUtil {
         }
     }
 
-    private static ClassLoader getClassLoader(){
+    public static ClassLoader getClassLoader(){
         return Thread.currentThread().getContextClassLoader();
     }
 

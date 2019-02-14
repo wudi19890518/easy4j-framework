@@ -5,6 +5,9 @@ import org.easy4j.framework.util.PropertyUtil;
 
 import java.util.Properties;
 
+/**
+ * 配置文件工具类
+ */
 public class ConfigHelper {
 
     private static final Properties CONFIG_PROPERTIES;
@@ -19,6 +22,22 @@ public class ConfigHelper {
 
     public static String getAppViewPath(){
         return PropertyUtil.getStringValue(CONFIG_PROPERTIES, ConfigConstant.APP_VIEW_PATH);
+    }
+
+    public static String getJdbcDriver(){
+        return PropertyUtil.getStringValue(CONFIG_PROPERTIES, ConfigConstant.APP_JDBC_DRIVER);
+    }
+
+    public static String getJdbcUrl(){
+        return PropertyUtil.getStringValue(CONFIG_PROPERTIES, ConfigConstant.APP_JDBC_URL);
+    }
+
+    public static String getJdbcUsername(){
+        return PropertyUtil.getStringValue(CONFIG_PROPERTIES, ConfigConstant.APP_JDBC_USERNAME);
+    }
+
+    public static String getJdbcPassword(){
+        return PropertyUtil.getStringValue(CONFIG_PROPERTIES, ConfigConstant.APP_JDBC_PASSWORD);
     }
 
 }

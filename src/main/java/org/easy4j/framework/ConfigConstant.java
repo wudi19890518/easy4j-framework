@@ -8,5 +8,13 @@ public class ConfigConstant {
 
     public static final String APP_VIEW_PATH = "app.view.path";
 
+    public static final String APP_JDBC_DRIVER = "app.jdbc.driver";
+
+    public static final String APP_JDBC_URL = "app.jdbc.url";
+
+    public static final String APP_JDBC_USERNAME = "app.jdbc.username";
+
+    public static final String APP_JDBC_PASSWORD = "app.jdbc.password";
+
 
 }
