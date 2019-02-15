@@ -7,10 +7,7 @@ import org.apache.logging.log4j.Logger;
 import org.easy4j.framework.annotation.ResponseBody;
 import org.easy4j.framework.bean.Handler;
 import org.easy4j.framework.bean.Param;
-import org.easy4j.framework.helper.BeanHelper;
-import org.easy4j.framework.helper.BeanLoader;
-import org.easy4j.framework.helper.ConfigHelper;
-import org.easy4j.framework.helper.ControllerHelper;
+import org.easy4j.framework.helper.*;
 import org.easy4j.framework.util.JsonUtil;
 import org.easy4j.framework.util.ReflectionUtil;
 
@@ -46,7 +43,8 @@ public class DispatcherServlet extends HttpServlet {
 
         ServletRegistration defaultServlet = servletContext.getServletRegistration("default");
         defaultServlet.addMapping("/favicon.ico");
-//        defaultServlet.addMapping(ConfigHelper.getAppAssetPath() + "*");
+
+        UploadHelper.init(servletContext);
     }
 
     @Override
@@ -72,10 +70,15 @@ public class DispatcherServlet extends HttpServlet {
                 }
             }
 
-
-            Param param = new Param(paramMap);
+            Param param = new Param(null);
             Method actionMethod = handler.getMethod();
-            Object result = ReflectionUtil.invokeMethod(actionMethod, controllerBean, param);
+            Object result = null;
+            if(param.isEmpty()){
+                result = ReflectionUtil.invokeMethod(actionMethod, controllerBean);
+            }else{
+                result = ReflectionUtil.invokeMethod(actionMethod, controllerBean, param);
+            }
+
             // 判断method方法上面是否存在 ResponseBody注解,是否返回json数据
             if(actionMethod.isAnnotationPresent(ResponseBody.class)){
                 // 返回json数据

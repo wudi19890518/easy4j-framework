@@ -21,7 +21,7 @@ public class ReflectionUtil {
         return instance;
     }
 
-    public static Object invokeMethod(Method method, Object instance, Object params){
+    public static Object invokeMethod(Method method, Object instance, Object... params){
         Object result = null;
 
         try {

@@ -16,5 +16,7 @@ public class ConfigConstant {
 
     public static final String APP_JDBC_PASSWORD = "app.jdbc.password";
 
+    public static final String APP_UPLOAD_LIMIT = "app.upload.limit";
+
 
 }

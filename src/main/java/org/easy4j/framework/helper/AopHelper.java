@@ -4,7 +4,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.easy4j.framework.annotation.Aspect;
 import org.easy4j.framework.annotation.Service;
-import org.easy4j.framework.annotation.Transactional;
 import org.easy4j.framework.proxy.AbstractProxy;
 import org.easy4j.framework.proxy.Proxy;
 import org.easy4j.framework.proxy.ProxyManager;

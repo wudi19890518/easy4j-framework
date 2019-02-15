@@ -40,4 +40,8 @@ public class ConfigHelper {
         return PropertyUtil.getStringValue(CONFIG_PROPERTIES, ConfigConstant.APP_JDBC_PASSWORD);
     }
 
+    public static int getAppUploadLimit(){
+        return PropertyUtil.getIntValue(CONFIG_PROPERTIES, ConfigConstant.APP_UPLOAD_LIMIT);
+    }
+
 }

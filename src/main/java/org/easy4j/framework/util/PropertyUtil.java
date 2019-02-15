@@ -1,5 +1,6 @@
 package org.easy4j.framework.util;
 
+import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -32,6 +33,23 @@ public class PropertyUtil {
 
     public static String getStringValue(Properties props, String key, String defaultValue){
         return props.getProperty(key, defaultValue);
+    }
+
+    public static Integer getIntValue(Properties props, String key){
+        return getIntValue(props, key, 0);
+    }
+
+    public static Integer getIntValue(Properties props, String key, Integer defaultValue){
+        String strValue = props.getProperty(key);
+        if(StringUtils.isEmpty(strValue)){
+            return defaultValue;
+        }
+        try {
+            return Integer.valueOf(strValue);
+        }catch(Exception e){
+            LOGGER.error("类型转换错误");
+            return defaultValue;
+        }
     }
 
 }
