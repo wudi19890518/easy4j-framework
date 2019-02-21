@@ -60,17 +60,13 @@ public class DispatcherServlet extends HttpServlet {
 
             Object controllerBean = BeanHelper.getBean(controllerClass);
 
-            Map<String, Object> paramMap = new HashMap();
-            Enumeration<String> paramNames = req.getParameterNames();
-            if(paramNames != null){
-                while(paramNames.hasMoreElements()){
-                    String paramName = paramNames.nextElement();
-                    String paramValue = req.getParameter(paramName);
-                    paramMap.put(paramName, paramValue);
-                }
+            Param param = null;
+            if(UploadHelper.isMultipart(req)){
+                param = UploadHelper.createParam(req);
+            }else{
+                param = RequestHelper.createParam(req);
             }
 
-            Param param = new Param(null);
             Method actionMethod = handler.getMethod();
             Object result = null;
             if(param.isEmpty()){

@@ -42,11 +42,11 @@ public class UploadHelper {
         }
     }
 
-    public boolean isMultipart(HttpServletRequest request){
+    public static boolean isMultipart(HttpServletRequest request){
         return ServletFileUpload.isMultipartContent(request);
     }
 
-    public Param createParam(HttpServletRequest request){
+    public static Param createParam(HttpServletRequest request){
         List<FormParam> formParamList = new ArrayList<FormParam>();
         List<FileParam> fileParamList = new ArrayList<FileParam>();
 
