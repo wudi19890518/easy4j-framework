@@ -1,6 +1,7 @@
 package org.easy4j.framework.helper;
 
 import org.easy4j.framework.ConfigConstant;
+import org.easy4j.framework.util.CastUtil;
 import org.easy4j.framework.util.PropertyUtil;
 
 import java.util.Properties;
@@ -42,6 +43,14 @@ public class ConfigHelper {
 
     public static int getAppUploadLimit(){
         return PropertyUtil.getIntValue(CONFIG_PROPERTIES, ConfigConstant.APP_UPLOAD_LIMIT);
+    }
+
+    public static String getString(String key){
+        return PropertyUtil.getStringValue(CONFIG_PROPERTIES, key);
+    }
+
+    public static boolean getBoolean(String key){
+        return CastUtil.toBoolean(PropertyUtil.getStringValue(CONFIG_PROPERTIES, key, "false"));
     }
 
 }

@@ -10,6 +10,17 @@ public class ReflectionUtil {
 
     private static final Logger LOGGER = LogManager.getLogger(ReflectionUtil.class);
 
+    public static Object newInstance(String className){
+        Object instance = null;
+        try {
+            Class clazz = Class.forName(className);
+            instance = clazz.newInstance();
+        } catch (Exception e) {
+            LOGGER.error("new instance failure:{}", className, e);
+        }
+        return instance;
+    }
+
     public static Object newInstance(Class<?> beanClass){
         Object instance = null;
         try {

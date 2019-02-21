@@ -14,4 +14,8 @@ public class CastUtil {
     public static String toString(Object value){
         return toString(value, "");
     }
+
+    public static boolean toBoolean(String value){
+        return Boolean.valueOf(value);
+    }
 }
