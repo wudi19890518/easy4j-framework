@@ -2,6 +2,7 @@ package org.easy4j.framework.bean;
 
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.collections4.MapUtils;
+import org.easy4j.framework.util.CastUtil;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -76,5 +77,9 @@ public class Param {
     public boolean isEmpty(){
         return CollectionUtils.isEmpty(fileParamList)
                 && CollectionUtils.isEmpty(formParamList);
+    }
+
+    public String getString(String name){
+        return CastUtil.toString(getFieldMap().get(name));
     }
 }
